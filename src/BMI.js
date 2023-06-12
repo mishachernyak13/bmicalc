@@ -29,7 +29,7 @@ function BMI() {
   };
   
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (weight && height) {
       calculateBMI();
     }
