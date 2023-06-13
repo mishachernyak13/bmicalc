@@ -17,7 +17,6 @@ function BMI() {
     }
   };
 
-
   const handleWeightChange = (e) => {
     setWeight(e.target.value);
     calculateBMI();
