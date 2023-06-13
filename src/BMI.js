@@ -4,48 +4,48 @@ function BMI() {
   const [weight, setWeight] = useState(30);
   const [height, setHeight] = useState(100);
   const [bmi, setBMI] = useState('');
-  
+
   const calculateBMI = () => {
     if (weight !== '' && height !== '') {
       const weightValue = parseFloat(weight);
       const heightValue = parseFloat(height);
 
-      if (!isNaN(weightValue) && !isNaN(heightValue) && heightValue !== 0 ) {
-      const bmiValue = Math.floor(weight / ((height / 100) * (height / 100)));
-      setBMI(bmiValue);
+      if (!isNaN(weightValue) && !isNaN(heightValue) && heightValue !== 0) {
+        const bmiValue = Math.floor(weight / ((height / 100) * (height / 100)));
+        setBMI(bmiValue);
       }
     }
   };
 
   useEffect(() => {
     calculateBMI();
-}, [weight, height]);
+  }, [weight, height]);
 
   return (
     <div>
       <h2>Калькулятор ІМТ</h2>
       <div>
-      <label htmlFor="weightInput">Вага (кг):</label>
-      <input
-      type="range"
-      value={weight}
-      onChange={(e) => setWeight(e.target.value)}
-      min="30"
-      max="150"
-      id="weightInput"
-      />
-         <span>{weight}</span>
+        <label htmlFor="weightInput">Вага (кг):</label>
+        <input
+          type="range"
+          value={weight}
+          onChange={(e) => setWeight(e.target.value)}
+          min="30"
+          max="150"
+          id="weightInput"
+        />
+        <span>{weight}</span>
       </div>
       <div>
-      <label htmlFor="heightInput">Вага (кг):</label>
-      <input
-      type="range"
-      value={height}
-      onChange={(e) => setHeight(e.target.value)}
-      min="100"
-      max="210"
-      id="heightInput"
-      />
+        <label htmlFor="heightInput">Вага (кг):</label>
+        <input
+          type="range"
+          value={height}
+          onChange={(e) => setHeight(e.target.value)}
+          min="100"
+          max="210"
+          id="heightInput"
+        />
         <span>{height}</span>
       </div>
       {bmi !== '' && (
