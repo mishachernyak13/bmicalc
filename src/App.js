@@ -6,7 +6,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<BMI />} />
+        <Route path="/bmi" element={<BMI />} />
       </Routes>
     </Router>
   );
