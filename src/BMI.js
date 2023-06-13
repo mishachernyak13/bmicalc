@@ -17,6 +17,7 @@ function BMI() {
     }
   };
 
+
   const handleWeightChange = (e) => {
     setWeight(e.target.value);
     calculateBMI();
@@ -29,10 +30,8 @@ function BMI() {
   
 
   useEffect(() => {
-    if (weight && height) {
-      calculateBMI();
-    }
-  }, [weight, height, calculateBMI]);
+    calculateBMI();
+}, [weight, height]);
 
   return (
     <div>
