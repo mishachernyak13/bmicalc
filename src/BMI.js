@@ -17,18 +17,6 @@ function BMI() {
     }
   };
 
-
-  const handleWeightChange = (e) => {
-    setWeight(e.target.value);
-    calculateBMI();
-  };
-  
-  const handleHeightChange = (e) => {
-    setHeight(e.target.value);
-    calculateBMI();
-  };
-  
-
   useEffect(() => {
     calculateBMI();
 }, [weight, height]);
@@ -41,7 +29,7 @@ function BMI() {
         <input
           type="range"
           value={weight}
-          onChange={handleWeightChange}
+          onChange={(e) => setWeight(e.target.value)}
           min = "30"
           max = "150"
         />
@@ -52,7 +40,7 @@ function BMI() {
         <input
           type="range"
           value={height}
-          onChange={handleHeightChange}
+          onChange={(e) => setHeight(e.target.value)}
           min = "100"
           max = "210"
         />
