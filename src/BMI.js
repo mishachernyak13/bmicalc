@@ -7,8 +7,8 @@ function BMI() {
   
   const calculateBMI = () => {
     if (weight !== '' && height !== '') {
-      const weightValue = parseInt(weight);
-      const heightValue = parseInt(height);
+      const weightValue = parseFloat(weight);
+      const heightValue = parseFloat(height);
 
       if (!isNaN(weightValue) && !isNaN(heightValue) && heightValue !== 0 ) {
       const bmiValue = Math.floor(weight / ((height / 100) * (height / 100)));
@@ -25,25 +25,27 @@ function BMI() {
     <div>
       <h2>Калькулятор ІМТ</h2>
       <div>
-        <label>Вага (кг):</label>
-        <input
-          type="range"
-          value={weight}
-          onChange={(e) => setWeight(e.target.value)}
-          min = "30"
-          max = "150"
-        />
+      <label htmlFor="weightInput">Вага (кг):</label>
+      <input
+      type="range"
+      value={weight}
+      onChange={(e) => setWeight(e.target.value)}
+      min="30"
+      max="150"
+      id="weightInput"
+      />
          <span>{weight}</span>
       </div>
       <div>
-        <label>Зріст (см):</label>
-        <input
-          type="range"
-          value={height}
-          onChange={(e) => setHeight(e.target.value)}
-          min = "100"
-          max = "210"
-        />
+      <label htmlFor="heightInput">Вага (кг):</label>
+      <input
+      type="range"
+      value={height}
+      onChange={(e) => setHeight(e.target.value)}
+      min="100"
+      max="210"
+      id="heightInput"
+      />
         <span>{height}</span>
       </div>
       {bmi !== '' && (
