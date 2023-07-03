@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./MedTest.css"
+import "./MedTest.css";
 
 function MedTest() {
     const [answers, setAnswers] = useState(Array(7).fill([]));
@@ -7,25 +7,215 @@ function MedTest() {
     const [resultText, setResultText] = useState("");
     const scores = [0, 1, 2, 3];
 
-    const questions = [
-        "* 1. Ви нервували, відчували тривогу або були дуже напружені",
-        "* 2. Ви не могли зупинити або контролювати своє хвилювання",
-        "* 3. Ви занадто хвилювались через різні речі",
-        "* 4. Вам було важко розслабитись",
-        "* 5. Ви були настільки неспокійні, що Вам було важко всидіти на одному місці",
-        "* 6. Вам було легко дошкулити або роздратувати",
-        "* 7. Ви відчували страх, неначе щось жахливе може статися"
-    ];
-
-    const answersOptions = [
-        ["Ніколи", "Декілька днів", "Більшу половину часу", "Майже щодня"],
-        ["Ніколи", "Декілька днів", "Більшу половину часу", "Майже щодня"],
-        ["Ніколи", "Декілька днів", "Більшу половину часу", "Майже щодня"],
-        ["Ніколи", "Декілька днів", "Більшу половину часу", "Майже щодня"],
-        ["Ніколи", "Декілька днів", "Більшу половину часу", "Майже щодня"],
-        ["Ніколи", "Декілька днів", "Більшу половину часу", "Майже щодня"],
-        ["Ніколи", "Декілька днів", "Більшу половину часу", "Майже щодня"]
-    ];
+    const questionsAnswers = {
+        name: "Медичний тест",
+        desc: "Тест рівня тривожності",
+        questions: [
+            {
+                name: "*1. Ви нервували, відчували тривогу або були дуже напружені",
+                answers: [
+                    {
+                        name: "Ніколи",
+                        is_correct: true,
+                        points: 0,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Декілька днів",
+                        is_correct: false,
+                        points: 1,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Більшу половину часу",
+                        is_correct: false,
+                        points: 2,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Майже щодня",
+                        is_correct: false,
+                        points: 3,
+                        type: "checkbox"
+                    }
+                ]
+            },
+            {
+                name: "* 2. Ви не могли зупинити або контролювати своє хвилювання",
+                answers: [
+                    {
+                        name: "Ніколи",
+                        is_correct: true,
+                        points: 0,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Декілька днів",
+                        is_correct: false,
+                        points: 1,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Більшу половину часу",
+                        is_correct: false,
+                        points: 2,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Майже щодня",
+                        is_correct: false,
+                        points: 3,
+                        type: "checkbox"
+                    }
+                ]
+            },
+            {
+                name: "* 3. Ви занадто хвилювались через різні речі",
+                answers: [
+                    {
+                        name: "Ніколи",
+                        is_correct: true,
+                        points: 0,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Декілька днів",
+                        is_correct: false,
+                        points: 1,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Більшу половину часу",
+                        is_correct: false,
+                        points: 2,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Майже щодня",
+                        is_correct: false,
+                        points: 3,
+                        type: "checkbox"
+                    }
+                ]
+            },
+            {
+                name: "* 4. Вам було важко розслабитись",
+                answers: [
+                    {
+                        name: "Ніколи",
+                        is_correct: true,
+                        points: 0,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Декілька днів",
+                        is_correct: false,
+                        points: 1,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Більшу половину часу",
+                        is_correct: false,
+                        points: 2,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Майже щодня",
+                        is_correct: false,
+                        points: 3,
+                        type: "checkbox"
+                    }
+                ]
+            },
+            {
+                name: "* 5. Ви були настільки неспокійні, що Вам було важко всидіти на одному місці",
+                answers: [
+                    {
+                        name: "Ніколи",
+                        is_correct: true,
+                        points: 0,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Декілька днів",
+                        is_correct: false,
+                        points: 1,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Більшу половину часу",
+                        is_correct: false,
+                        points: 2,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Майже щодня",
+                        is_correct: false,
+                        points: 3,
+                        type: "checkbox"
+                    }
+                ]
+            },
+            {
+                name: "* 6. Вам було легко дошкулити або роздратувати",
+                answers: [
+                    {
+                        name: "Ніколи",
+                        is_correct: true,
+                        points: 0,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Декілька днів",
+                        is_correct: false,
+                        points: 1,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Більшу половину часу",
+                        is_correct: false,
+                        points: 2,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Майже щодня",
+                        is_correct: false,
+                        points: 3,
+                        type: "checkbox"
+                    }
+                ]
+            },
+            {
+                name: "* 7. Ви відчували страх, неначе щось жахливе може статися",
+                answers: [
+                    {
+                        name: "Ніколи",
+                        is_correct: true,
+                        points: 0,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Декілька днів",
+                        is_correct: false,
+                        points: 1,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Більшу половину часу",
+                        is_correct: false,
+                        points: 2,
+                        type: "checkbox"
+                    },
+                    {
+                        name: "Майже щодня",
+                        is_correct: false,
+                        points: 3,
+                        type: "checkbox"
+                    }
+                ]
+            },
+        ]
+    };
 
     const formatQuestion = (question) => {
         return question.replace("*", "<span class='required-marker'>*</span>");
@@ -72,28 +262,34 @@ function MedTest() {
             resultText = "Тривога вираженого ступеня.";
         }
         setResultText(resultText);
-    }
+    };
+
+    const { name, desc, questions } = questionsAnswers;
+
     return (
         <div className="med-test-container">
-            <h1>Медичний тест</h1>
+            <h1>{name}</h1>
+            <p>{desc}</p>
             <form>
                 {questions.map((question, questionIndex) => (
                     <div key={questionIndex} className="question-container">
-                        <p className="question" dangerouslySetInnerHTML={{ __html: formatQuestion(question) }}></p>
-                        {answersOptions[questionIndex].map((answersOptions, answerIndex) => (
+                        <p className="question" dangerouslySetInnerHTML={{ __html: formatQuestion(question.name) }}></p>
+                        {question.answers.map((answer, answerIndex) => (
                             <label key={answerIndex} className="answer-label">
                                 <input
-                                    type="checkbox"
+                                    type={answer.type}
                                     checked={answers[questionIndex].includes(answerIndex)}
                                     onChange={() => handleAnswerChange(questionIndex, answerIndex)}
                                 />
-                                <span className="answer-text">{answersOptions}</span>
+                                <span className="answer-text">{answer.name}</span>
                             </label>
                         ))}
                     </div>
                 ))}
             </form>
-            <button className="result-button" onClick={calculateTotalScore}>Результат</button>
+            <button className="result-button" onClick={calculateTotalScore}>
+                Результат
+            </button>
             <p>Загальна сума балів: {totalScore}</p>
             <p className={`result-text ${resultText !== "" ? "visible" : ""}`}>
                 {resultText}
@@ -101,4 +297,5 @@ function MedTest() {
         </div>
     );
 }
+
 export default MedTest;
