@@ -1,0 +1,55 @@
+.med-test-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .question-container {
+    margin-bottom: 10px;
+  }
+  
+  .question {
+    font-weight: bold;
+  }
+  
+  .required-marker {
+    color: red;
+    margin-right: 5px;
+  }
+  
+  .answer-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .answer-text {
+    margin-left: 5px;
+  }
+  
+  .result-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .result-button:hover {
+    background-color: #45a049;
+  }
+  
+  .result-text {
+    font-weight: bold;
+    margin-top: 10px;
+    display: none;
+  }
+  
+  .result-text.visible {
+    display: block;
+  }
+  
+  .total-score {
+    margin-top: 10px;
+  }
+  
