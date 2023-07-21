@@ -28,6 +28,7 @@
   font-size: 18px;
   margin-bottom: 10px;
   color: #3399CC;
+  font-weight: 600;
 }
 
 .answer-label {
@@ -68,4 +69,38 @@
 
 .result-text.visible {
   display: block;
+}
+
+.answer-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.answer-label span.answer-text {
+  position: relative;
+  padding-left: 30px; 
+  cursor: pointer;
+}
+
+.answer-label span.answer-text::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #3399CC;
+  border-radius: 4px;
+}
+
+.answer-label input[type="checkbox"]:checked + span.answer-text::before {
+  background-color: #333; 
+}
+
+.answer-label input[type="checkbox"]:checked + span.answer-text::before {
+  content: "\2713"; 
+  font-size: 16px;
+  color: #3399CC; 
+  line-height: 18px;
+  text-align: center;
 }
