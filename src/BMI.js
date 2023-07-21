@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './BMI.css';
 
 function BMI() {
   const [weight, setWeight] = useState(30);
@@ -22,7 +23,7 @@ function BMI() {
   }, [weight, height]);
 
   return (
-    <div>
+    <div className="bmi-container"> {/* Додаємо клас для стилізації */}
       <h2>Калькулятор ІМТ</h2>
       <div>
         <label htmlFor="weightInput">Вага (кг):</label>
@@ -33,6 +34,7 @@ function BMI() {
           min="30"
           max="150"
           id="weightInput"
+          className="w-slider"
         />
         <span>{weight}</span>
       </div>
@@ -45,6 +47,7 @@ function BMI() {
           min="100"
           max="210"
           id="heightInput"
+          className="h-slider"
         />
         <span>{height}</span>
       </div>
@@ -52,7 +55,7 @@ function BMI() {
         <div>
           <h3>Ваш ІМТ: {bmi}</h3>
           <p>
-            <strong>Інтерпретація:</strong>
+            <strong>Інтерпретація: </strong>
             {bmi < 18.5 && 'Недостатня вага'}
             {bmi >= 18.5 && bmi < 24.9 && 'Норма'}
             {bmi >= 24.9 && bmi < 29.9 && 'Надлишкова вага'}
