@@ -13,6 +13,8 @@ const MusicPlayer = () => {
   const [currentSongIndex, setCurrentSongIndex] = useState(0); // Зберігаємо індекс поточної пісні
   const [progress, setProgress] = useState(0); // Новий стан для повзунка прогреса
   const audioRef = useRef(null);
+  const lastButtonRef = useRef(-1);
+
   const songs = [
     {
       title: "VOLODYMYR DANTES — ЧУЄШ",
@@ -45,6 +47,10 @@ const MusicPlayer = () => {
       audioRef.current.play();
     }
     setIsPlaying(!isPlaying);
+  };
+
+  const handleButtonClick = (buttonIndex) => {
+    lastButtonRef.current = buttonIndex;
   };
 
   const handleStop = () => {
@@ -94,6 +100,41 @@ const MusicPlayer = () => {
     const formattedTime = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
     return formattedTime;
   }
+  useEffect(() => {
+    const handleSpacebarPress = (e) => {
+      if (e.code === "Space") {
+        handlePlayPause();
+      }
+    };
+
+    document.addEventListener("keydown", handleSpacebarPress);
+
+    return () => {
+      document.removeEventListener("keydown", handleSpacebarPress);
+    };
+  }, [handlePlayPause]);
+
+  useEffect(() => {
+    if (isPlaying) {
+      audioRef.current.play();
+    }
+  }, [currentSongIndex]);
+
+  useEffect(() => {
+    // Перевіряємо, чи натиснута була кнопка "Skip" або "Prev", а потім автоматично запускаємо музику
+    if (lastButtonRef.current === 3 || lastButtonRef.current === 2) {
+      setIsPlaying(true);
+    }
+  }, [currentSongIndex]);
+
+  useEffect(() => {
+    // Автоматично запускаємо або призупиняємо музику залежно від стану isPlaying
+    if (isPlaying) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  }, [isPlaying]);
 
   return (
     <div className="music-player">
@@ -118,16 +159,16 @@ const MusicPlayer = () => {
         <span className="time">{formatTime(currentTime)}/</span>  <span className="time-full">{formatTime(duration)}</span>
       </div>
       <div className="controls">
-        <button className="control-button" onClick={handlePreviousSong}>
+        <button className="control-button" onClick={() => { handleButtonClick(2); handlePreviousSong(); }}>
           <FontAwesomeIcon icon={faStepBackward} />
         </button>
-        <button className="control-button" onClick={handlePlayPause}>
+        <button className="control-button" onClick={() => { handleButtonClick(0); handlePlayPause(); }}>
           {isPlaying ? <FontAwesomeIcon icon={faPause} /> : <FontAwesomeIcon icon={faPlay} />}
         </button>
-        <button className="control-button" onClick={handleStop}>
+        <button className="control-button" onClick={() => { handleButtonClick(1); handleStop(); }}>
           <FontAwesomeIcon icon={faStop} />
         </button>
-        <button className="control-button" onClick={handleNextSong}>
+        <button className="control-button" onClick={() => { handleButtonClick(3); handleNextSong(); }}>
           <FontAwesomeIcon icon={faStepForward} />
         </button>
       </div>
